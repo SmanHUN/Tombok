@@ -1,4 +1,6 @@
-﻿namespace Tombok
+﻿using System.Diagnostics.Tracing;
+
+namespace Tombok
 {
     internal class Program
     {
@@ -23,10 +25,35 @@
             }
         }
 
+        static void Csere()
+        {
+            Console.WriteLine("Melyik törpöt cseráljük:");
+            string nev = Console.ReadLine();
+            
+            
+            int index = 0;
+            while (index < torpok.Length && torpok[index] != nev)
+            {
+                index++;
+            }
+            if (index < torpok.Length)
+            {
+                Console.WriteLine("Melyik törpe cseréljük le?");
+                string ujNev = Console.ReadLine();
+                torpok[index] = ujNev;
+                Console.WriteLine("Lecserélve");
+            }
+            else
+            {
+                Console.WriteLine("Nincs ilyen törp");
+            }
+        }
+
         static void Main(string[] args)
         {
             TorpokLetrehozasa();
             TorpokKiirasa();
+            Csere();
         }
     }
 }
